@@ -24,6 +24,10 @@ The final deliverable is a Streamlit web app that non‑technical users (like ma
 
 ## 📂 Project Structure
 
+
+
+
+
 ```text
 ecommerce_project/
 ├── app.py                  # Streamlit dashboard
@@ -39,6 +43,7 @@ ecommerce_project/
     ├── revenue_trend.png
     ├── top_categories.png
     └── rfm_segments.png
+
 
 
 > Note: The Streamlit app also generates some charts (e.g. churn distribution) dynamically at runtime.
@@ -91,8 +96,6 @@ These come from `kpi_summary.csv` computed during the EDA notebook.
 
 - Displays the first 20 rows of `sales_data.csv` for transparency and manual inspection.
 
-
-text
 ## ⚙️ How to Run Locally
 
 Clone the repo
@@ -124,5 +127,4 @@ Open the URL shown in the terminal (usually `http://localhost:8501`) in your bro
 
 Dataset: *Sales & Customer Behaviour Insights – Green Cart Ltd* on Kaggle.  
 Project author: *[Aniqua Nawar]*.
-
 
