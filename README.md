@@ -91,6 +91,7 @@ These come from `kpi_summary.csv` computed during the EDA notebook.
 
 - Displays the first 20 rows of `sales_data.csv` for transparency and manual inspection.
 
+
 text
 ## ⚙️ How to Run Locally
 
