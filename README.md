@@ -23,7 +23,7 @@ The final deliverable is a Streamlit web app that non‑technical users (like ma
 - **Data source**: Kaggle – *Sales & Customer Behaviour Insights (Green Cart Ltd)*
 
 ## 📂 Project Structure
-
+```
 ecommerce_project/
 ├── app.py # Streamlit dashboard
 ├── requirements.txt # Python dependencies
@@ -39,9 +39,13 @@ ecommerce_project/
 ├── top_categories.png
 └── rfm_segments.png
 
-text
+
 
 > Note: The Streamlit app also generates some charts (e.g. churn distribution) dynamically at runtime.
+
+
+
+
 
 ## 📊 What the Dashboard Shows
 
