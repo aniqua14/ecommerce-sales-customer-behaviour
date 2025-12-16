@@ -24,20 +24,22 @@ The final deliverable is a Streamlit web app that non‑technical users (like ma
 
 ## 📂 Project Structure
 
+```text
 ecommerce_project/
-├── app.py # Streamlit dashboard
-├── requirements.txt # Python dependencies
-├── data_files/ # Precomputed data used by the app
-│ ├── sales_data.csv
-│ ├── customer_info.csv
-│ ├── product_info.csv
-│ ├── kpi_summary.csv
-│ ├── rfm_summary.csv
-│ └── rfm_with_churn.csv
-└── assets/ # Saved charts used in the app
-├── revenue_trend.png
-├── top_categories.png
-└── rfm_segments.png
+├── app.py                  # Streamlit dashboard
+├── requirements.txt        # Python dependencies
+├── data_files/             # Precomputed data used by the app
+│   ├── sales_data.csv
+│   ├── customer_info.csv
+│   ├── product_info.csv
+│   ├── kpi_summary.csv
+│   ├── rfm_summary.csv
+│   └── rfm_with_churn.csv
+└── assets/                 # Saved charts used in the app
+    ├── revenue_trend.png
+    ├── top_categories.png
+    └── rfm_segments.png
+
 
 > Note: The Streamlit app also generates some charts (e.g. churn distribution) dynamically at runtime.
 
