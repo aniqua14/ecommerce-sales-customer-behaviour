@@ -24,95 +24,103 @@ The final deliverable is a Streamlit web app that non‑technical users (like ma
 
 ## 📂 Project Structure
 
-```text
 ecommerce_project/
-├── app.py                  # Streamlit dashboard
-├── requirements.txt        # Python dependencies
-├── data_files/             # Precomputed data used by the app
-│   ├── sales_data.csv
-│   ├── customer_info.csv
-│   ├── product_info.csv
-│   ├── kpi_summary.csv
-│   ├── rfm_summary.csv
-│   └── rfm_with_churn.csv
-└── assets/                 # Saved charts used in the app
-    ├── revenue_trend.png
-    ├── top_categories.png
-    └── rfm_segments.png
-📊 What the Dashboard Shows
-1. KPI Cards
+├── app.py # Streamlit dashboard
+├── requirements.txt # Python dependencies
+├── data_files/ # Precomputed data used by the app
+│ ├── sales_data.csv
+│ ├── customer_info.csv
+│ ├── product_info.csv
+│ ├── kpi_summary.csv
+│ ├── rfm_summary.csv
+│ └── rfm_with_churn.csv
+└── assets/ # Saved charts used in the app
+├── revenue_trend.png
+├── top_categories.png
+└── rfm_segments.png
+
+text
+
+> Note: The Streamlit app also generates some charts (e.g. churn distribution) dynamically at runtime.
+
+## 📊 What the Dashboard Shows
+
+### 1. KPI Cards
+
 At the top of the app, four cards summarise business performance:
 
-Total Revenue – sum of all order revenue.
+- **Total Revenue** – sum of all order revenue.
+- **Total Orders** – number of unique orders.
+- **Total Customers** – number of unique customers.
+- **Average Order Value (AOV)** – revenue per order.
 
-Total Orders – number of unique orders.
+These come from `kpi_summary.csv` computed during the EDA notebook.
 
-Total Customers – number of unique customers.
+### 2. Sales Trends Tab
 
-Average Order Value (AOV) – revenue per order.
+- **Monthly Revenue Trend**  
+  Simple line plot of total revenue by month (`YearMonth`).  
+  In this dataset, all orders occur in June 2025, so the line shows one peak month.
 
-These come from kpi_summary.csv computed during the EDA notebook.
+- **Revenue by Region**  
+  Bar chart of `quantity × unit_price` aggregated by `region`.  
+  Shows that all regions contribute similar revenue, with a slight lead for the South region.
 
-2. Sales Trends Tab
-Monthly Revenue Trend
-Simple line plot of total revenue by month (YearMonth).
-In this dataset, all orders occur in June 2025, so the line shows one peak month.
+- **Top 10 Categories by Revenue**  
+  Horizontal bar chart of the 10 product categories generating the most revenue.  
+  Cleaning products dominate, followed by Storage and Outdoors.
 
-Revenue by Region
-Bar chart of quantity × unit_price aggregated by region.
-Shows that all regions contribute similar revenue, with a slight lead for the South region.
+### 3. RFM & Churn Tab
 
-Top 10 Categories by Revenue
-Horizontal bar chart of the 10 product categories generating the most revenue.
-Cleaning products dominate, followed by Storage and Outdoors.
+- **RFM Segment Summary**  
+  RFM (Recency, Frequency, Monetary) scores are computed per customer and grouped into segments such as `511`, `522`, etc.  
+  The table shows median recency, frequency, monetary value and count per segment.
 
-3. RFM & Churn Tab
-RFM Segment Summary
-RFM (Recency, Frequency, Monetary) scores are computed per customer and grouped into segments such as 511, 522, etc.
-The table shows median recency, frequency, monetary value and count per segment.
+- **Top RFM Segments (by count)**  
+  Bar chart of the most common RFM scores.  
+  This highlights which types of customers (e.g. recent but low‑spend vs. loyal high‑value) dominate the customer base.
 
-Top RFM Segments (by count)
-Bar chart of the most common RFM scores.
-This highlights which types of customers (e.g. recent but low‑spend vs. loyal high‑value) dominate the customer base.
+- **Churn Distribution & Model**  
+  Customers with only one order are labelled as **churned**.  
+  A RandomForestClassifier is trained on R, F, M features to predict churn.  
+  The app shows:
+  - A sample of the `rfm_with_churn.csv` table.
+  - A bar chart “Churn vs Non‑Churn Customers”, which clearly shows most customers are currently retained.
 
-Churn Distribution & Model
-Customers with only one order are labelled as churned.
-A RandomForestClassifier is trained on R, F, M features to predict churn.
-The app shows:
+### 4. Raw Tables Tab
 
-A sample of the rfm_with_churn.csv table.
+- Displays the first 20 rows of `sales_data.csv` for transparency and manual inspection.
 
-A bar chart “Churn vs Non‑Churn Customers”, which clearly shows most customers are currently retained.
+## ⚙️ How to Run Locally
 
-4. Raw Tables Tab
-Displays the first 20 rows of sales_data.csv for transparency and manual inspection.
-
-⚙️ How to Run Locally
-bash
-# Clone the repo
+Clone the repo
 git clone https://github.com/aniqua14/ecommerce-sales-customer-behaviour.git
 cd ecommerce-sales-customer-behaviour
 
-# Create virtual environment (optional but recommended)
+Create virtual environment (optional but recommended)
 python -m venv .venv
-.\.venv\Scripts\activate   # Windows
+..venv\Scripts\activate # Windows
 
-# Install dependencies
+Install dependencies
 pip install -r requirements.txt
 
-# Run Streamlit app
+Run Streamlit app
 streamlit run app.py
-Open the URL shown in the terminal (usually http://localhost:8501) in your browser.
 
-🧠 Key Insights (Example for teacher/interviewer)
-Cleaning and Storage categories generate the highest revenue, suggesting they should be stocked and promoted carefully.
+text
 
-Revenue is evenly distributed across regions, but South has a small lead.
+Open the URL shown in the terminal (usually `http://localhost:8501`) in your browser.
 
-RFM analysis reveals that segments 511 and 512 contain the highest number of customers – relatively recent shoppers with low frequency and spend.
+## 🧠 Key Insights (Example for teacher/interviewer)
 
-Churn labelling shows only a small fraction of customers churn after a single order, but these customers can be targeted with re‑engagement campaigns.
+- Cleaning and Storage categories generate the highest revenue, suggesting they should be stocked and promoted carefully.
+- Revenue is evenly distributed across regions, but South has a small lead.
+- RFM analysis reveals that segments `511` and `512` contain the highest number of customers – relatively recent shoppers with low frequency and spend.
+- Churn labelling shows only a small fraction of customers churn after a single order, but these customers can be targeted with re‑engagement campaigns.
 
-📌 Credits
-Dataset: Sales & Customer Behaviour Insights – Green Cart Ltd on Kaggle.
-Project author: [Aniqua Nawar].
+## 📌 Credits
+
+Dataset: *Sales & Customer Behaviour Insights – Green Cart Ltd* on Kaggle.  
+Project author: *[Aniqua Nawar]*.
+
+
