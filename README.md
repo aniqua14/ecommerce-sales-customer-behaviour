@@ -39,7 +39,7 @@ ecommerce_project/
 ├── top_categories.png
 └── rfm_segments.png
 
-
+```
 
 > Note: The Streamlit app also generates some charts (e.g. churn distribution) dynamically at runtime.
 
